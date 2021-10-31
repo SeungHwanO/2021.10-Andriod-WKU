@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#003F51B5</color>
+    <color name="colorPrimaryDark">#E8E8DB</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="backgroundColor">#FFFCE6</color>
+    <color name="signatureColor">#FDCB02</color>
+
+</resources>
