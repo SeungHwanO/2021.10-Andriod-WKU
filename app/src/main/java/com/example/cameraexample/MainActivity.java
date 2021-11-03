@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bitmap bitmap = BitmapFactory.decodeFile(imageFilePath);
             ExifInterface exif = null;
@@ -163,12 +164,10 @@ public class MainActivity extends AppCompatActivity {
 
             Log.d("###", "bitmap.getwidth = " + bitmap.getWidth() + ", height = " + bitmap.getHeight());
 
-            Bitmap bitOut = Bitmap.createBitmap(bitmap.getWidth(),bitmap.getHeight(),bitmap.getConfig());
+            Bitmap bitOut = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), bitmap.getConfig());
             int npixel;
-            for(int y=0;y<bitmap.getHeight();y++)
-            {
-                for(int x=0;x<bitmap.getWidth();x++)
-                {
+            for (int y = 0; y < bitmap.getHeight(); y++) {
+                for (int x = 0; x < bitmap.getWidth(); x++) {
 
                     /*
                     Color color = bitmap.getColor(x, y);
@@ -178,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
                     float fBlue = color.blue();
                     */
 
-                    npixel = bitmap.getPixel(x,y);
+                    npixel = bitmap.getPixel(x, y);
 
                     float fAlpha = Color.alpha(npixel);
                     int fRed = Color.red(npixel);
@@ -191,12 +190,12 @@ public class MainActivity extends AppCompatActivity {
                     if (fRed >= 206 && fRed <= 229) {
                     */
                     if ((fRed >= 162) && (fGreen <= 140) && (fGreen <= 140)) {
-                                fRed = 230;
-                                fGreen = 0;
-                                fBlue = 211;
+                        fRed = 230;
+                        fGreen = 0;
+                        fBlue = 211;
                     }
                     //bitOut.setPixel(x,y,Color.argb(fAlpha,fRed,fGreen,fBlue));
-                    bitOut.setPixel(x,y,Color.rgb(fRed,fGreen,fBlue));
+                    bitOut.setPixel(x, y, Color.rgb(fRed, fGreen, fBlue));
                 }
             }
             //이미지 뷰에 비트맵을 set하여 이미지 표현
